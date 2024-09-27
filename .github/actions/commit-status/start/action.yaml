@@ -10,7 +10,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: |
+    - shell: bash 
+      run: |
         echo "Hello from custom action"
         id
         echo ----
