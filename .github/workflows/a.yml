@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Craft payload
         env:
-          REVIEW_BODY: ${{ github.event.pull_request.body }}
+          REVIEW_BODY: Whatever
           PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
           COMMIT_ID: ${{ github.event.review.commit_id }}
         run: |
