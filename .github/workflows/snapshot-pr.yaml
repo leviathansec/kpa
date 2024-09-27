@@ -18,10 +18,12 @@ jobs:
       - uses: ./.github/actions/download-artifact
       - id: metadata
         run: |
+          cat /tmp/artifacts/metadata.txt
           pr_number="$(head -n 2 /tmp/artifacts/metadata.txt | tail -n 1)"
           pr_commit="$(tail -n 1 /tmp/artifacts/metadata.txt)"
           echo PR_COMMIT="$pr_commit" >> "$GITHUB_ENV"
           echo PR_NUMBER="$pr_number" >> "$GITHUB_ENV"
+          cat $GITHUB_ENV
       - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
         with:
           ref: ${{ env.PR_COMMIT }}
