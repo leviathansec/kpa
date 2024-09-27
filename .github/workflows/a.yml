@@ -1,0 +1,21 @@
+name: ApprovalComment
+on:
+  pull_request:
+    types: [edited]
+jobs:
+  approval-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Craft payload
+        env:
+          REVIEW_BODY: Whatever
+          PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_ID: ${{ github.event.pull_request.head.sha }}
+        run: |
+          mkdir -p /tmp/artifacts
+          { echo "$REVIEW_BODY"; echo "$PULL_REQUEST_NUMBER"; echo "$COMMIT_ID"; } >> /tmp/artifacts/metadata.txt
+          cat /tmp/artifacts/metadata.txt
+      - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
+        with:
+          name: artifacts
+          path: /tmp/artifacts
